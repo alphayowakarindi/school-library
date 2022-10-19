@@ -21,6 +21,10 @@ class Person
   def can_use_services?
     of_age? || @parent_permission
   end
+
+  def correct_name
+    @name
+  end
 end
 
 # Nameable class
