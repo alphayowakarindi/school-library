@@ -1,4 +1,5 @@
-class Person 
+# Person class
+class Person
   attr_reader :id
   attr_accessor :name, :age
 
@@ -19,5 +20,12 @@ class Person
 
   def can_use_services?
     of_age? || @parent_permission
+  end
+end
+
+# Nameable class
+class Nameable
+  def correct_name
+    raise NotImplementedError
   end
 end
