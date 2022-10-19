@@ -1,3 +1,8 @@
+require_relative 'nameable'
+require_relative 'base_decorator'
+require_relative 'capitalize_decorator'
+require_relative 'trimmer_decorator'
+
 # Person class
 class Person
   attr_reader :id
@@ -24,39 +29,6 @@ class Person
 
   def correct_name
     @name
-  end
-end
-
-# Nameable class
-class Nameable
-  def correct_name
-    raise NotImplementedError
-  end
-end
-
-# Base decorator
-class BaseDecorator < Nameable
-  def initialize(nameable)
-    super()
-    @nameable = nameable
-  end
-
-  def correct_name
-    @nameable.correct_name
-  end
-end
-
-# Capitalize decorator
-class CapitalizeDecorator < BaseDecorator
-  def correct_name
-    @nameable.correct_name.capitalize
-  end
-end
-
-# Trimmer decorator
-class TrimmerDecorator < BaseDecorator
-  def correct_name
-    @nameable.correct_name.length <= 10 ? @nameable.correct_name : @nameable.correct_name[0..9]
   end
 end
 
