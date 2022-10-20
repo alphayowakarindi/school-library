@@ -1,5 +1,6 @@
 require_relative 'student'
 require_relative 'teacher'
+require_relative 'book'
 
 class App
   attr_accessor :books, :people
@@ -78,5 +79,16 @@ class App
     teacher = Teacher.new(age, name, specialization)
     @people.push(teacher)
     puts 'Person created successfully'
+  end
+
+  # create book
+  def create_book
+    print 'Title: '
+    title = gets.chomp
+    print 'Author: '
+    author = gets.chomp
+    book = Book.new(title, author)
+    @books.push(book)
+    puts 'Book created successfully'
   end
 end
