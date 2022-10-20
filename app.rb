@@ -27,4 +27,18 @@ class App
       end
     end
   end
+
+  # create a person
+  def create_person
+    puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    selected_number = gets.chomp.to_i
+    case selected_number
+    when 1
+      create_student
+    when 2
+      create_teacher
+    else
+      puts 'Kindly select either 1 or 2 only'
+    end
+  end
 end
