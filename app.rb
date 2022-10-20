@@ -1,3 +1,5 @@
+require_relative 'student'
+
 class App
   attr_accessor :books, :people
 
@@ -40,5 +42,27 @@ class App
     else
       puts 'Kindly select either 1 or 2 only'
     end
+  end
+
+  # create student
+  def create_student
+    print 'Age: '
+    age = gets.chomp.to_i
+    print 'Name: '
+    name = gets.chomp
+    print 'Has parent permission? [Y/N]: '
+    parent_permission = gets.chomp.capitalize
+    case parent_permission
+    when 'Y'
+      parent_permission = true
+    when 'N'
+      parent_permission = false
+    else
+      puts 'Kindly enter either Y or N only'
+    end
+
+    student = Student.new(age, name, parent_permission)
+    @people.push(student)
+    puts 'Person created successfully '
   end
 end
