@@ -1,13 +1,15 @@
 require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
+require_relative 'rental'
 
 class App
-  attr_accessor :books, :people
+  attr_accessor :books, :people, :rentals
 
   def initialize
     @books = []
     @people = []
+    @rentals = []
   end
 
   # list all books
@@ -90,5 +92,30 @@ class App
     book = Book.new(title, author)
     @books.push(book)
     puts 'Book created successfully'
+  end
+
+  # create rental
+  def create_rental
+    return unless @books.length.positive?
+
+    puts 'Select a book from the following list by number'
+    @books.each_with_index do |book, i|
+      puts "#{i}) Title: \"#{book.title}\", Author: #{book.author}"
+    end
+    book_choice = gets.chomp.to_i
+    puts 'select a person from the following list by number (not id)'
+
+    return unless @people.length.positive?
+
+    @people.each_with_index do |person, i|
+      puts "#{i}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+    person_choice = gets.chomp.to_i
+
+    print 'Date: '
+    date_choice = gets.chomp
+    rental = Rental.new(date_choice, @people[person_choice], @books[book_choice])
+    @rentals.push(rental)
+    puts 'Rental created successfully'
   end
 end
