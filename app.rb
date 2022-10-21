@@ -118,4 +118,22 @@ class App
     @rentals.push(rental)
     puts 'Rental created successfully'
   end
+
+  # list all rentals for a given person id
+  def list_all_rentals
+    if @rentals.empty?
+      puts 'Rentals list is empty'
+    else
+      print 'ID of person : '
+      person_id = gets.chomp.to_i
+
+      @people.each do |person|
+        next unless person.id == person_id
+
+        person.rentals.each_with_index do |rental, _i|
+          puts " \n Rentals: \n Date: #{rental.date}, Book \"#{rental.book.title}\" by #{rental.book.author}"
+        end
+      end
+    end
+  end
 end
